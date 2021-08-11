@@ -31,8 +31,9 @@
 *.out
 *.app
 
-#Folders
-.vs
-Debug
-Release
-x64
+#Visual Temporary files
+.vs/
+#Executable Temporary files
+Debug/
+Release/
+x64/
