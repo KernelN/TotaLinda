@@ -36,6 +36,7 @@ void inicializarVec(empleado e[], empleado jub[])
 		(*(e + i)).DNI = "NULL";
 		(*(e + i)).nombre[0] = NULL;
 		(*(jub + i)).nombre[1] = NULL;
+
 	}
 }
 
@@ -44,7 +45,7 @@ void ingresarEmpleado(empleado e[], int& pos, empleado vec[], int& j)
 	cin.get();
 	if (pos < MAX)
 	{
-		cout << endl << endl << "-----------------------------------------------------------------------------" << endl;
+		cout << "-----------------------------------------------------------------------------" << endl;
 		cout << "Ingrese, con el siguiente formato, el DNI del empleado: xx.xxx.xxx: ";
 		getline(cin, e[pos].DNI);
 
@@ -53,8 +54,20 @@ void ingresarEmpleado(empleado e[], int& pos, empleado vec[], int& j)
 		for (short i = 0; i < 50 && nom != 13; i++)
 		{
 			nom = _getche();
-			e[pos].nombre[i] = nom;
+			if (nom==8)
+            {
+                i--;
+                e[pos].nombre[i]=VACIO;
+                i--;
+            }
+            else
+                e[pos].nombre[i] = nom;
+                if (e[pos].nombre[i]==13)
+                {
+                    e[pos].nombre[i+1]=13;
+                }
 		}
+
 		cout<<endl;
 		cout << endl << "Ingrese el estado civil del empleado. " << endl << "S: Soltero/a." << endl << "C: Casado/a." << endl << "V: Viudo/a." << endl;
 		getline(cin, e[pos].estado);
@@ -167,12 +180,14 @@ void ordenar(empleado vec[])
 void jubilacion(empleado jub[])
 {
 	ordenar(jub);
-	for (int i = 25; i >=0; i--)
+	cout<<"-------------------------------------------------------------------------------------------"<<endl;
+	for (int i = MAX; i >=0; i--)
 	{
 		//if (jub[i].nombre[0] == NULL)
         //{
           //  return;
         //}
+
         if (jub[i].nombre[1] != NULL)
         {
             cout << "Nombre: ";
@@ -180,7 +195,7 @@ void jubilacion(empleado jub[])
             {
                 cout << jub[i].nombre[j];
             }
-            cout<<"-------------------------------------------------------------------------------------------";
+            cout<<endl<<"-------------------------------------------------------------------------------------------";
             cout << endl<<endl<<endl;
         }
 	}
@@ -199,7 +214,7 @@ void mostrarMenu()
 
 	do
 	{
-		cout << "a-Ingresar un empleado." << endl << "b-Datos del empleado." << endl << "c-Edad promedio de los empleados" << endl << "d-Listado de los emmpleados que esten proximos a jubilarse. " << endl << endl;
+		cout << "a-Ingresar un empleado." << endl << "b-Datos del empleado." << endl << "c-Edad promedio de los empleados" << endl << "d-Listado de los emmpleados que esten proximos a jubilarse. " << endl <<"ESC- Cerrar el programa."<< endl;
 		menu = _getche();
 		cout << endl << endl;
 		switch (menu)
