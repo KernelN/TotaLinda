@@ -31,8 +31,12 @@
 *.out
 *.app
 
-#Folders
-.vs
-Debug
-Release
-x64
+#Visual Temporary files
+.vs/
+#Executable Temporary files
+Debug/
+TotaLinda/Debug/
+Release/
+TotaLinda/Release/
+x64/
+TotaLinda/x64/
