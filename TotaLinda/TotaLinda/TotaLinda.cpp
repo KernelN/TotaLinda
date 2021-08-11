@@ -8,6 +8,8 @@
 
 using namespace std;
 
+
+
 struct empleado
 {
 	string DNI;
@@ -17,16 +19,18 @@ struct empleado
 	string sexo;
 	char nombre[50];
 	int edad;
+	bool jubilarse=1;
 
-	bool jubilarse = 0;
-
-	void jubilar(bool& jubilarse)
+	/*void jubilar(bool&j)
 	{
-		if (((sexo == "f" || sexo == "F") && edad >= 55) || ((sexo == "m" || sexo == "M") && edad >= 55))
-			jubilarse = 1;
+		if (((sexo == "f" || sexo == "F") && edad >= 55) || ((sexo == "m" || sexo == "M") && edad >= 60))
+			j = 1;
 		return;
 	}
+
+	jubilar (jubilarse);*/
 };
+
 
 void inicializarVec(empleado e[], empleado jub[])
 {
@@ -34,7 +38,7 @@ void inicializarVec(empleado e[], empleado jub[])
 	{
 		(*(e + i)).DNI = "NULL";
 		(*(e + i)).nombre[0] = NULL;
-		(*(jub + i)).nombre[0] = NULL;
+		(*(jub + i)).nombre[1] = NULL;
 	}
 }
 
@@ -73,12 +77,15 @@ void ingresarEmpleado(empleado e[], int& pos, empleado vec[], int& j)
 		cout << "-----------------------------------------------------------------------------" << endl;
 		cout << endl << endl << endl;
 
-		if (e[pos].jubilarse == true)
+		cout<<endl<<"Jubilarse == "<<e[pos].jubilarse<<endl;
+
+		if (e[pos].jubilarse == 1)
 		{
-			for (int h = 0; h < 50; h++)
+			for (int h = 0; h < 50 && e[pos].nombre[h]!=13; h++)
 			{
 				vec[j].nombre[h] = e[pos].nombre[h];
 			}
+			j++;
 		}
 
 	}
@@ -140,21 +147,22 @@ void ordenar(empleado vec[])
 	{
 		for (int i = 0; i < MAX - j - 1; i++)
 		{
-			if (vec[i].nombre > vec[i + 1].nombre)
+			int h=0;
+			while (vec[i].nombre[h] == vec[i+1].nombre[h])
 			{
-				aux = vec[i];
+				h++;
+			}
+			if (vec[i].nombre[h] < vec[i + 1].nombre[h])
+			{
+                aux = vec[i];
 				vec[i] = vec[i + 1];
 				vec[i + 1] = aux;
 			}
+			else
+            {
 
-			while (vec[i].nombre[j] == vec[i+1].nombre[j])
-			{
-				j++;
-			}
-			if (vec[i].nombre[j] > vec[i + 1].nombre[j])
-			{
-
-			}
+            }
+			h=0;
 		}
 	}
 	return;
@@ -164,8 +172,12 @@ void ordenar(empleado vec[])
 void jubilacion(empleado jub[])
 {
 	ordenar(jub);
-	for (int i = 0; i < MAX && jub[i].nombre != NULL; i++)
+	for (int i = 0; i < MAX && jub[i].nombre[1] != NULL; i++)
 	{
+		//if (jub[i].nombre[0] == NULL)
+        //{
+          //  return;
+        //}
 		cout << "Nombre: ";
 		for (int j = 0; j < MAX && jub[i].nombre[j] != 13; j++)
 		{
