@@ -8,7 +8,7 @@
 
 using namespace std;
 
-
+//arreglar sistema de asignado de jubilación. Arreglar orden alfabético de jubilación, ademas, limitar los caracteres hasta que se lea un ENTER
 
 struct empleado
 {
@@ -152,16 +152,13 @@ void ordenar(empleado vec[])
 			{
 				h++;
 			}
-			if (vec[i].nombre[h] < vec[i + 1].nombre[h])
+			if (vec[i + 1].nombre[h] > vec[i].nombre[h])
 			{
                 aux = vec[i];
 				vec[i] = vec[i + 1];
 				vec[i + 1] = aux;
 			}
-			else
-            {
 
-            }
 			h=0;
 		}
 	}
