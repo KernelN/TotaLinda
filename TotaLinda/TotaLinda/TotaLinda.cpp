@@ -19,14 +19,18 @@ struct empleado
 	string sexo;
 	char nombre[50];
 	int edad;
-	bool jubilarse=1;
+	bool jubilarse=0;
+};
 
-//    if (((sexo == "f" || sexo == "F") && edad >= 55) || ((sexo == "m" || sexo == "M") && edad >= 60))
-//        {
-//            jubilarse = 1;
-//        }
+	void jubilarse (bool &jubilarse,string sexo,int edad)
+	{
+	    if (((sexo == "H" || sexo == "h") && edad >= 55) || ((sexo == "m" || sexo == "M") && edad >= 60))
+        {
+            jubilarse = 1;
 
-	};
+        }
+        return;
+	}
 
 
 void inicializarVec(empleado e[], empleado jub[])
@@ -54,7 +58,7 @@ void ingresarEmpleado(empleado e[], int& pos, empleado vec[], int& j)
 		for (short i = 0; i < 50 && nom != 13; i++)
 		{
 			nom = _getche();
-			if (nom==8)
+			if (nom==8 && i>0)
             {
                 i--;
                 e[pos].nombre[i]=VACIO;
@@ -80,6 +84,11 @@ void ingresarEmpleado(empleado e[], int& pos, empleado vec[], int& j)
 
 		cout << endl << "Ingrese el sexo del empleado, M=mujer, H=hombre: ";
 		getline(cin, e[pos].sexo);
+		while (e[pos].sexo!="h" && e[pos].sexo!="H" && e[pos].sexo!="M" && e[pos].sexo!="m")
+        {
+            cout << endl << "Ingrese el sexo del empleado, M=mujer, H=hombre: ";
+            getline(cin, e[pos].sexo);
+        }
 
 		cout << endl << "Ingrese la edad del empleado: ";
 		cin >> e[pos].edad;
@@ -87,14 +96,13 @@ void ingresarEmpleado(empleado e[], int& pos, empleado vec[], int& j)
         {
             cout << endl << "Ingrese la edad del empleado, no puede ser menor de cero: ";
             cin >> e[pos].edad;
-            getch();
         }
 
 		cout << endl;
 		cout << "-----------------------------------------------------------------------------" << endl;
 		cout << endl << endl << endl;
 
-		cout<<endl<<"Jubilarse == "<<e[pos].jubilarse<<endl;
+        jubilarse(e[pos].jubilarse,e[pos].sexo,e[pos].edad);
 
 		if (e[pos].jubilarse == 1)
 		{
@@ -202,9 +210,10 @@ void jubilacion(empleado jub[])
                 cout << jub[i].nombre[j];
             }
             cout<<endl<<"-------------------------------------------------------------------------------------------";
-            cout << endl<<endl<<endl;
+
         }
 	}
+	cout << endl<<endl<<endl;
 }
 
 void mostrarMenu()
