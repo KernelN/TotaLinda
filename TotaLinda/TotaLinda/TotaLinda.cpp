@@ -8,7 +8,7 @@
 
 using namespace std;
 
-//arreglar sistema de asignado de jubilación. 
+//arreglar sistema de asignado de jubilación.
 
 struct empleado
 {
@@ -54,7 +54,7 @@ void ingresarEmpleado(empleado e[], int& pos, empleado vec[], int& j)
 		getline(cin, e[pos].DNI);
 
 		char nom = NULL;
-		cout << endl << "Ingrese el nombre y apellido del empleado: ";
+		cout << endl << "Ingrese el nombre y apellido del empleado: "<<endl;
 		for (short i = 0; i < 50 && nom != 13; i++)
 		{
 			nom = _getche();
@@ -126,6 +126,7 @@ void datosEmpleado(empleado e[])
 {
 	cin.get();
 	string dni;
+	cout << "-----------------------------------------------------------------------------" << endl;
 	cout << "Ingrese el DNI del empleado, de la siguiente manera: xx.xxx.xxx: ";
 	getline(cin, dni);
 
