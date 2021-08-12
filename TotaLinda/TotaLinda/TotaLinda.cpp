@@ -8,7 +8,7 @@
 
 using namespace std;
 
-//arreglar sistema de asignado de jubilación. Arreglar orden alfabético de jubilación, ademas, limitar los caracteres hasta que se lea un ENTER
+//arreglar sistema de asignado de jubilaciÃ³n. 
 
 struct empleado
 {
