@@ -83,6 +83,12 @@ void ingresarEmpleado(empleado e[], int& pos, empleado vec[], int& j)
 
 		cout << endl << "Ingrese la edad del empleado: ";
 		cin >> e[pos].edad;
+		while (e[pos].edad<=0)
+        {
+            cout << endl << "Ingrese la edad del empleado, no puede ser menor de cero: ";
+            cin >> e[pos].edad;
+            getch();
+        }
 
 		cout << endl;
 		cout << "-----------------------------------------------------------------------------" << endl;
