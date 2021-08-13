@@ -27,16 +27,19 @@ int main()
         {
             case 38:
                 conector[j]= '&';
-                j++;
+                l++;
                 break;
             case 124:
                 conector[j]= '|';
-                j++;
+                l++;
                 break;
             case 33:
                 conector[j]= '!';
-                j++;
+                l++;
                 break;
+            case 40: case 41:
+                position[j]=i;
+                j++;
             default:
                 break;
 
