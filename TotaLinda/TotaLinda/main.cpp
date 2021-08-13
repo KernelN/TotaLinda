@@ -9,8 +9,11 @@ int main()
     bool arrayBool [MAX]={1, 0, 0, 1, 1, 0, 0};
     char finalArray[4*MAX]="(3&44|33)&(!79|78)";
     int position[MAX];
+    char conector[MAX];
+
 
     short j=0;
+    short l=0;
     for (short i=0;i<4*MAX;i++)
     {
         if (finalArray[i]==40 || finalArray[i]==41)
@@ -18,8 +21,27 @@ int main()
             position[j]=i;
             j++;
         }
+
+        if (finalArray[i]==38 || finalArray[i]==124 || finalArray[i]==33)
+        {
+          switch (finalArray[i])
+            {
+                case 38:
+            }
+        }
     }
 
+
+
+//    for (int h=0;h<=j;h+=2)
+//    {
+//
+//    }
+    int i=1;
+    for (int h=0;i<position[2*i];h++)
+    {
+
+    }
 
     return 0;
 }
