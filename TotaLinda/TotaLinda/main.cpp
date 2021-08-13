@@ -22,13 +22,26 @@ int main()
             j++;
         }
 
-        if (finalArray[i]==38 || finalArray[i]==124 || finalArray[i]==33)
+
+        switch (finalArray[i])
         {
-          switch (finalArray[i])
-            {
-                case 38:
-            }
+            case 38:
+                conector[j]= "&";
+                j++;
+                break;
+            case 124:
+                conector[j]= "|";
+                j++;
+                break;
+            case 33:
+                conector[j]= "!";
+                j++;
+                break;
+            default:
+                break;
+
         }
+
     }
 
 
