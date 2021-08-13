@@ -16,13 +16,6 @@ int main()
     short l=0;
     for (short i=0;i<4*MAX;i++)
     {
-        if (finalArray[i]==40 || finalArray[i]==41)
-        {
-            position[j]=i;
-            j++;
-        }
-
-
         switch (finalArray[i])
         {
             case 38:
@@ -42,7 +35,6 @@ int main()
                 j++;
             default:
                 break;
-
         }
 
     }
