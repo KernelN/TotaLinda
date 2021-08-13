@@ -26,15 +26,15 @@ int main()
         switch (finalArray[i])
         {
             case 38:
-                conector[j]= "&";
+                conector[j]= '&';
                 j++;
                 break;
             case 124:
-                conector[j]= "|";
+                conector[j]= '|';
                 j++;
                 break;
             case 33:
-                conector[j]= "!";
+                conector[j]= '!';
                 j++;
                 break;
             default:
